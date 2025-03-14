@@ -71,4 +71,19 @@ ORDER BY alunos;
 ```
 
 ```sql
+UPDATE cursos SET titulo = 'Adobe XD', carga_horaria = 15
+WHERE id = 4;
 ```
+
+```sql
+DELETE FROM alunos WHERE id IN (9, 2);
+```
+
+```sql
+SELECT
+    alunos.nome AS Alunos,
+    cursos.titulo AS Cursos
+FROM alunos JOIN cursos ON alunos.curso_id = cursos.id
+ORDER BY alunos;
+```
+
