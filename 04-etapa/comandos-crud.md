@@ -110,16 +110,32 @@ ORDER BY alunos;
 
 Criar uma consulta que calcule a idade do aluno
 ```sql
+SELECT nome,
+    TIMESTAMPDIFF(YEAR, data_nascimento, '2025-03-14') AS Idade
+FROM alunos
+GROUP BY nome;
+-- TIMESTAMPDIFF: calcula a diferença entre as data (medida de calculo, primeira data, segunda data)
 ```
 
 Criar uma consulta que calcule a média das notas de cada aluno e mostre somente os alunos que tiveram a média maior ou igual a 7.
 ```sql
+SELECT nome, ROUND((primeira_nota + segunda_nota) / 2.0, 2) AS media_notas 
+FROM alunos
+GROUP BY nome
+HAVING media_notas >= 7; -- HAVING: usado para filtrar resultados
 ```
 
 Criar uma consulta que calcule a média das notas de cada aluno e mostre somente os alunos que tiveram a média menor que 7.
 ```sql
+SELECT nome, ROUND((primeira_nota + segunda_nota) / 2.0, 2) AS media_notas 
+FROM alunos
+GROUP BY nome
+HAVING media_notas < 7;
 ```
 
 Criar uma consulta que mostre a quantidade de alunos com média maior ou igual a 7.
 ```sql
+SELECT COUNT(*) AS Aprovados -- COUNT(*): utilizado para contar as linhas de toda a tabela, por isso o uso do * 
+FROM alunos
+WHERE (primeira_nota + segunda_nota) / 2 >= 7;
 ```
